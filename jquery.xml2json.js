@@ -48,8 +48,12 @@
          return;
         };
         /*DBG*/ //if(window.console) console.log(['x2j',nn,'node>d',cnn,'TEXT']);
-        txt += cnv.replace(/^\s+/,'').replace(/\s+$/,'');
-								// make sure we ditch trailing spaces from markup
+        if(cnn != '#cdata_section'){ // make sure we ditch trailing spaces from markup - avoid for <![CDATA[...]]>
+         txt += cnv.replace(/^\s+/,'').replace(/\s+$/,''); 
+        }
+        else{
+         txt += cnv;
+        }
        }
        else{
         /*DBG*/ //if(window.console) console.log(['x2j',nn,'node>e',cnn,'OBJECT']);
